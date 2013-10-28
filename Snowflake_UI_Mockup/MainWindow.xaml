@@ -1,0 +1,25 @@
+﻿<Window x:Class="Snowflake_UI_Mockup.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Snowflake" Height="500" Width="844"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DockPanel LastChildFill="False" Margin="10,408,9.6,10.4" Width="818" ClipToBounds="True" Height="52" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Image x:Name="Image_KinectForWindows" Height="41" VerticalAlignment="Top" Width="84" Source="Images/Logo.png" Margin="0,10,0,5" HorizontalAlignment="Left" Cursor="Hand" MouseUp="Image_KinectForWindows_MouseUp"/>
+        </DockPanel>
+        <DockPanel Height="124" LastChildFill="False" Margin="0" Background="#FF00BCF2" ClipToBounds="True">
+            <DockPanel Margin="0,12" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Top" ClipToBounds="True">
+                <Button x:Name="Button_Browse" Content="Browse" Height="100" Margin="0" Width="200" Background="#FF52318F" FontSize="20" Foreground="White" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Browse STL files from other users." Cursor="Hand" Click="Button_Browse_Click"/>
+                <Button x:Name="Button_Scan" Content="Scan" Height="100" Margin="0" Width="200" Background="#FF52318F" FontSize="20" Foreground="White" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Scan an object to be made into an STL file." Cursor="Hand" Click="Button_Scan_Click"/>
+                <Button x:Name="Button_Print" Content="Print" Height="100" Margin="0" Width="200" Background="#FF52318F" FontSize="20" Foreground="White" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Print an STL file (Windows 8.1 required)." Cursor="Hand" Click="Button_Print_Click"/>
+            </DockPanel>
+        </DockPanel>
+        <DockPanel LastChildFill="False" Margin="10,0,9.6,395.4" Width="818" Height="75.2" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image x:Name="Image_Snowflake" VerticalAlignment="Top" Source="Images/SnowflakeSmall.png" Height="65.6" Width="77.6" HorizontalAlignment="Left" MouseUp="Image_Snowflake_MouseUp" Cursor="Hand"/>
+        </DockPanel>
+
+    </Grid>
+</Window>

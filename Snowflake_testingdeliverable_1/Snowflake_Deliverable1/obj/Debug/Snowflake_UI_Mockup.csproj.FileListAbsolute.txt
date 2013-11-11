@@ -1,0 +1,31 @@
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\bin\Debug\Snowflake_UI_Mockup.exe.config
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\bin\Debug\Snowflake_UI_Mockup.exe
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\bin\Debug\Snowflake_UI_Mockup.pdb
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.csprojResolveAssemblyReference.cache
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\MainWindow.baml
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\MainWindow.g.cs
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\App.g.cs
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup_MarkupCompile.cache
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.g.resources
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.Properties.Resources.resources
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.csproj.GenerateResource.Cache
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.exe
+c:\users\evan\documents\visual studio 2012\Projects\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.pdb
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\bin\Debug\Snowflake_UI_Mockup.exe.config
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.exe
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.pdb
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\bin\Debug\Snowflake_UI_Mockup.exe
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\bin\Debug\Snowflake_UI_Mockup.pdb
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.csprojResolveAssemblyReference.cache
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\MainWindow.baml
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\MainWindow.g.cs
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\App.g.cs
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup_MarkupCompile.cache
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.g.resources
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.Properties.Resources.resources
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Snowflake_UI_Mockup.csproj.GenerateResource.Cache
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\App.baml
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Window_Browse.baml
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\Window_Browse.g.cs
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\WindowScan.baml
+C:\Users\Evan\Documents\School Work\College\Fall 2013\Senior Design\Snowflake_UI_Mockup\Snowflake_UI_Mockup\obj\Debug\WindowScan.g.cs

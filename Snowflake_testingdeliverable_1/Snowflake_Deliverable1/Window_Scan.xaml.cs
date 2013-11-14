@@ -121,7 +121,8 @@ namespace Snowflake_UI_Mockup
                 if (depthFrame != null)
                 {
                     // Copy the pixel data from the image to a temporary array
-                    depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
+                    //depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
+                    this.depthPixels = depthFrame.GetRawPixelData();
 
                     // Get the min and max reliable depth for the current frame
                     int minDepth = depthFrame.MinDepth;
@@ -204,15 +205,18 @@ namespace Snowflake_UI_Mockup
             System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KinectScans");
 
             // Get current time.
+            int count = 0;
             string time = System.DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
 
             // Path of the text file with the depth data.
-            string path = Path.Combine(myDocuments, "DepthData-" + time + ".dat");
+            //string path = Path.Combine(myDocuments, "DepthData-" + time + ".txt");
 
             // Binary writer to write to dat file.
-            BinaryWriter bw = new BinaryWriter(File.Open(path, FileMode.Create));
+            //BinaryWriter bw = new BinaryWriter(File.Open(path, FileMode.Create));
+            //StreamWriter bw = new StreamWriter(File.Open(path, FileMode.Create));
             
             // Take every 30th frame. (1 frame / sec).
+            /*
             for (int i = 1; i < depthFrames.Count; i+=30)
             {
                 // Write depth data of the frame.
@@ -220,10 +224,22 @@ namespace Snowflake_UI_Mockup
                 {
                     bw.Write(depthFrames[i-1][j].Depth);
                 }
+            }*/
+            foreach (DepthImagePixel[] temp in depthFrames)
+            {
+                string path = Path.Combine(myDocuments, "DepthData-" + time + count + ".txt");
+                StreamWriter bw = new StreamWriter(File.Open(path, FileMode.Create));
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    bw.Write(temp[i].Depth);
+                    bw.Write(", ");
+                }
+                bw.Close();
+                count++;
             }
             
             // Close binary writer.
-            bw.Close();
+            //bw.Close();
 
             // Indicate that the depth data was collected.
             this.statusBarText.Text = "Done!";

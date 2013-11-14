@@ -121,7 +121,7 @@ namespace Snowflake_UI_Mockup
                 if (depthFrame != null)
                 {
                     // Copy the pixel data from the image to a temporary array
-                    depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
+                    this.depthPixels = depthFrame.GetRawPixelData();
 
                     // Get the min and max reliable depth for the current frame
                     int minDepth = depthFrame.MinDepth;
@@ -167,7 +167,11 @@ namespace Snowflake_UI_Mockup
                         0);
 
                     // Store the depth data if the user wanted the data captured.
-                    if(capture) this.depthFrames.Add(this.depthPixels);
+                    if (capture)
+                    {
+                        this.depthFrames.Add(depthFrame.GetRawPixelData());
+                        capture = false;
+                    }
                 }
             }
         }
@@ -207,23 +211,31 @@ namespace Snowflake_UI_Mockup
             string time = System.DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
 
             // Path of the text file with the depth data.
-            string path = Path.Combine(myDocuments, "DepthData-" + time + ".dat");
+            //string path = Path.Combine(myDocuments, "DepthData-" + time + ".txt");
 
             // Binary writer to write to dat file.
-            BinaryWriter bw = new BinaryWriter(File.Open(path, FileMode.Create));
+            //BinaryWriter bw = new BinaryWriter(File.Open(path, FileMode.Create));
             
             // Take every 30th frame. (1 frame / sec).
-            for (int i = 1; i < depthFrames.Count; i+=30)
+            //for (int i = 0; i < depthFrames.Count; i+=30)
+            //{
+            int count = 0;
+            foreach (DepthImagePixel[] px in this.depthFrames)
             {
-                // Write depth data of the frame.
-                for (int j = 0; j < depthFrames[i-1].Length; j++)
-                {
-                    bw.Write(depthFrames[i-1][j].Depth);
-                }
+                    string path = Path.Combine(myDocuments, "DepthData-" + time + "_" + count + ".txt");
+
+                    StreamWriter bw = new StreamWriter(path);
+
+                    // Write depth data of the frame.
+                    for (int i = 0; i < px.Length; i++)
+                    {
+                        bw.Write(px[i].Depth);
+                    }
+
+                    // Close binary writer.
+                    bw.Close();
+                count++;
             }
-            
-            // Close binary writer.
-            bw.Close();
 
             // Indicate that the depth data was collected.
             this.statusBarText.Text = "Done!";

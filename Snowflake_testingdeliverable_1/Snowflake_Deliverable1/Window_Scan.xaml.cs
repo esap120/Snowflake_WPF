@@ -2,10 +2,13 @@
 using System.Globalization;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Kinect;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Snowflake_UI_Mockup
 {
@@ -48,6 +51,9 @@ namespace Snowflake_UI_Mockup
         /// Boolean to determine if frames should be captured.
         /// </summary>
         private bool capture = false;
+
+        private int minDepth = 30;
+        private int maxDepth = 1000;
 
         public WindowScan()
         {
@@ -125,10 +131,8 @@ namespace Snowflake_UI_Mockup
                     this.depthPixels = depthFrame.GetRawPixelData();
 
                     // Get the min and max reliable depth for the current frame
-                    int minDepth = depthFrame.MinDepth;
-                    int maxDepth = depthFrame.MaxDepth;
-                    //int minDepth = 30;
-                    //int maxDepth = 1000;
+                    //int minDepth = depthFrame.MinDepth;
+                    //int maxDepth = depthFrame.MaxDepth;
 
                     // Convert the depth to RGB
                     int colorPixelIndex = 0;
@@ -174,76 +178,6 @@ namespace Snowflake_UI_Mockup
                 }
             }
         }
-        /*
-        /// <summary>
-        /// Event handler for 'Done' button click event, start processing depth frames
-        /// </summary>
-        /// <param name="sender">object sending the event</param>
-        /// <param name="e">event arguments</param>
-        private void Button_Done_Click(object sender, RoutedEventArgs e)
-        {
-            // Stop capturing data.
-            //capture = false;
-
-            // Stop scanning.
-            if (null != this.sensor)
-            {
-                this.sensor.Stop();
-            }
-
-            // Indicate that the depth data will be processed.
-            //this.statusBarText.Text = "Starting Depth Data Processing...";
-
-            if (null == this.sensor)
-            {
-                this.statusBarText.Text = Snowflake_Deliverable1.Properties.Resources.ConnectDeviceFirst;
-                return;
-            }
-
-            // Path for the photos.
-            string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KinectScans\";
-
-            // Create directory.
-            System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KinectScans");
-
-            // Get current time.
-            int count = 0;
-            string time = System.DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
-
-            // Path of the text file with the depth data.
-            //string path = Path.Combine(myDocuments, "DepthData-" + time + ".txt");
-
-            // Binary writer to write to dat file.
-            //BinaryWriter bw = new BinaryWriter(File.Open(path, FileMode.Create));
-            //StreamWriter bw = new StreamWriter(File.Open(path, FileMode.Create));
-
-            // Take every 30th frame. (1 frame / sec).
-            foreach (DepthImagePixel[] temp in depthFrames)
-            {
-                string path = Path.Combine(myDocuments, "DepthData-" + time + count + ".txt");
-                StreamWriter bw = new StreamWriter(File.Open(path, FileMode.Create));
-                for (int i = 0; i < temp.Length; i++)
-                {
-                    bw.Write(temp[i].Depth);
-                    bw.Write(", ");
-                }
-                bw.Close();
-                count++;
-            }
-
-            // Close binary writer.
-            //bw.Close();
-
-            // Indicate that the depth data was collected.
-            this.statusBarText.Text = "Done!";
-
-            // Open file explorer to show the user their collected data.
-            System.Diagnostics.Process.Start(myDocuments);
-
-            // Turn of start and done to indicate that the user needs to restart or close.
-            this.Button_Done.IsEnabled = false;
-            this.Button_Start.IsEnabled = false;
-        }*/
 
         /// <summary>
         /// Event handler for 'Restart' button click event, sets restart to true
@@ -272,18 +206,6 @@ namespace Snowflake_UI_Mockup
             mw.Show();
             this.Close();
         }
-
-        /*
-        /// <summary>
-        /// Event handler 'Start' button click event, sets capture to true
-        /// </summary>
-        /// <param name="sender">object sending the event</param>
-        /// <param name="e">event arguments</param>
-        private void Button_Start_Click(object sender, RoutedEventArgs e)
-        {
-            this.statusBarText.Text = @"Capturing depth data... Press 'Done' to stop.";
-            capture = true;
-        }*/
 
         /// <summary>
         /// Event handler for Window closing event
@@ -330,35 +252,6 @@ namespace Snowflake_UI_Mockup
             // Get current time.
             string time = System.DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
 
-            // Path of the text file with the depth data.
-            //string path = Path.Combine(myDocuments, "DepthData-" + time + ".txt");
-
-            // Binary writer to write to dat file.
-            //BinaryWriter bw = new BinaryWriter(File.Open(path, FileMode.Create));
-            //StreamWriter bw = new StreamWriter(File.Open(path, FileMode.Create));
-
-            // Take every 30th frame. (1 frame / sec).
-            /*
-            for (int i = 1; i < depthFrames.Count; i+=30)
-            {
-                // Write depth data of the frame.
-                for (int j = 0; j < depthFrames[i-1].Length; j++)
-                {
-                    bw.Write(depthFrames[i-1][j].Depth);
-                }
-            }
-            foreach (DepthImagePixel[] temp in depthFrames)
-            {
-                string path = Path.Combine(myDocuments, "DepthData-" + time + count + ".txt");
-                StreamWriter bw = new StreamWriter(File.Open(path, FileMode.Create));
-                for (int i = 0; i < temp.Length; i++)
-                {
-                    bw.Write(temp[i].Depth);
-                    bw.Write(", ");
-                }
-                bw.Close();
-                count++;
-            }*/
             string path = Path.Combine(myDocuments, "DepthData-" + time + ".txt");
             StreamWriter sw = new StreamWriter(File.Open(path, FileMode.Create));
             for (int i = 0; i < depthPixels.Length; i++)
@@ -373,23 +266,41 @@ namespace Snowflake_UI_Mockup
             BinaryWriter bw = new BinaryWriter(File.Open(path2, FileMode.Create));
             for (int i = 0; i < depthPixels.Length; i++)
             {
+                if (depthPixels[i].Depth > maxDepth || depthPixels[i].Depth < minDepth) depthPixels[i].Depth = 0;
                 bw.Write(depthPixels[i].Depth);
-                bw.Write(" ");
             }
             // Close binary writer.
             bw.Close();
 
+            // Send raw depth data to the cloud.
+
+            // URI for RESTful upload API call.
+            string URI = @"http://snowflake.cloudapp.net/rawdata/upload";
+            string result;
+            using (var client = new WebClient())
+            {
+                byte[] result1 = client.UploadFile(URI, path2);
+                string responseAsString = Encoding.Default.GetString(result1);
+                result = responseAsString;
+            }
+
+            var stlKey = (new Regex("\"stl_key\": \"(.*)\"", RegexOptions.Compiled)).Match(result).Groups[1];
+
+            string url = @"http://snowflake.cloudapp.net/stl/" + stlKey;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
             // Indicate that the depth data was collected.
-            this.statusBarText.Text = "Done!";
+            this.statusBarText.Text = "Done! STL KEY: ";
+            this.TextBox_STL.Text = stlKey.ToString();
 
             // Open file explorer to show the user their collected data.
             System.Diagnostics.Process.Start(myDocuments);
 
-            // Turn of start and done to indicate that the user needs to restart or close.
-            //this.Button_Done.IsEnabled = false;
+            // Turn off start and done to indicate that the user needs to restart or close.
             this.Button_Start.IsEnabled = false;
         }
-
-
     }
 }

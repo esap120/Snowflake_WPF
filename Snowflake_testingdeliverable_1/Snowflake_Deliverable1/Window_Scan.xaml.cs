@@ -285,7 +285,7 @@ namespace Snowflake_UI_Mockup
             }
 
             var stlKey = (new Regex("\"stl_key\": \"(.*)\"", RegexOptions.Compiled)).Match(result).Groups[1];
-
+              
             string url = @"http://snowflake.cloudapp.net/stl/" + stlKey;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
